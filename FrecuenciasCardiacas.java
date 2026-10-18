@@ -36,4 +36,24 @@ public class FrecuenciasCardiacas {
     }
 
     ////Metodos
+    /// calcularEdad
+    public int calcularEdad() {
+        // Obtener la fecha actual
+        java.util.Calendar fechaActual = java.util.Calendar.getInstance();
+        int añoActual = fechaActual.get(java.util.Calendar.YEAR);
+        int mesActual = fechaActual.get(java.util.Calendar.MONTH) + 1; // Los meses comienzan desde 0
+        int diaActual = fechaActual.get(java.util.Calendar.DAY_OF_MONTH);
+
+        // Calcular la edad
+        int edad = añoActual - fechaNacimiento.getAño();
+
+        // Ajustar la edad si el cumpleaños aún no ha ocurrido este año
+        if (mesActual < fechaNacimiento.getMes() || (mesActual == fechaNacimiento.getMes() && diaActual < fechaNacimiento.getDia())) {
+            edad--;
+        }
+
+        return edad;
+    }
+
+    //
 }
