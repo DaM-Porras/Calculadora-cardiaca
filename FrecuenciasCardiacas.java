@@ -55,5 +55,18 @@ public class FrecuenciasCardiacas {
         return edad;
     }
 
-    //
+    //Frecuencia cardiaca maxima
+    public int calcularFrecuenciaCardiacaMaxima() {
+        int edad = calcularEdad();
+        return 220 - edad;
+    }
+
+    //Frecuencia cardiaca esperada
+    public String calcularFrecuenciaEsperada() {
+        int frecuenciaMaxima = calcularFrecuenciaCardiacaMaxima();
+        double frecuenciaMinima = frecuenciaMaxima * 0.5;
+        double frecuenciaMaximaEsperada = frecuenciaMaxima * 0.85;
+
+        return "Su frecuencia cardiaca esperada se encuentra entre " + (int)frecuenciaMinima + " y " + (int)frecuenciaMaximaEsperada + " latidos por minuto. No consideramos otros factores externos que apliquen (salud, actividad fisica, etc).";
+    }
 }
