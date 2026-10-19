@@ -1,7 +1,6 @@
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Scanner;
 
 public class FrecuenciasCardiacas {
     String nombre;
@@ -11,7 +10,7 @@ public class FrecuenciasCardiacas {
     private int anioNacimiento;
 
     //constructor
-    public FrecuenciasCardiacas(String nombre, String apellido, Fecha fechaNacimiento, int diaNacimiento, int mesNacimiento, int anioNacimiento) {
+    public FrecuenciasCardiacas(String nombre, String apellido, int diaNacimiento, int mesNacimiento, int anioNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.diaNacimiento = diaNacimiento;
@@ -85,41 +84,5 @@ public class FrecuenciasCardiacas {
 
         return "Su frecuencia cardiaca esperada se encuentra entre " + (int)frecuenciaMinima + " y " + (int)frecuenciaMaximaEsperada + " latidos por minuto. No consideramos otros factores externos que apliquen (salud, actividad fisica, etc).";
     }
-
-    public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
-
-        System.out.print("Ingrese su primer nombre: ");
-        String nombre = entrada.nextLine();
-
-        System.out.print("Ingrese su apellido: ");
-        String apellido = entrada.nextLine();
-
-        System.out.print("Ingrese su día de nacimiento: ");
-        int dia = entrada.nextInt();
-
-        System.out.print("Ingrese su mes de nacimiento: ");
-        int mes = entrada.nextInt();
-
-        System.out.print("Ingrese su año de nacimiento: ");
-        int año = entrada.nextInt();
-
-        Fecha fechaNacimiento = new Fecha(dia, mes, año);
-        FrecuenciasCardiacas persona = new FrecuenciasCardiacas(nombre, apellido, fechaNacimiento);
-
-        System.out.println("\nInformación de la persona:");
-        System.out.println("Nombre: " + persona.getNombre());
-        System.out.println("Apellido: " + persona.getApellido());
-        System.out.println("Fecha de nacimiento: "
-                + persona.getFechaNacimiento().getDia() + "/"
-                + persona.getFechaNacimiento().getMes() + "/"
-                + persona.getFechaNacimiento().getAño());
-
-        System.out.println("Edad: " + persona.calcularEdad() + " años");
-        System.out.println("Frecuencia cardiaca máxima: "
-                + persona.calcularFrecuenciaCardiacaMaxima() + " latidos por minuto");
-        System.out.println(persona.calcularFrecuenciaEsperada());
-
-        entrada.close();
-    }
 }
+
