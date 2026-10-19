@@ -1,15 +1,22 @@
+
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Scanner;
 
 public class FrecuenciasCardiacas {
     String nombre;
     String apellido;
-    Fecha fechaNacimiento;
+    private int diaNacimiento;
+    private int mesNacimiento;
+    private int anioNacimiento;
 
     //constructor
-    public FrecuenciasCardiacas(String nombre, String apellido, Fecha fechaNacimiento) {
+    public FrecuenciasCardiacas(String nombre, String apellido, Fecha fechaNacimiento, int diaNacimiento, int mesNacimiento, int anioNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
+        this.diaNacimiento = diaNacimiento;
+        this.mesNacimiento = mesNacimiento;
+        this.anioNacimiento = anioNacimiento;
     }
 
     // Getters y Setters ///////////////////////////
@@ -29,33 +36,40 @@ public class FrecuenciasCardiacas {
         this.apellido = apellido;
     }
 
-    //fechaNacimiento
-    public Fecha getFechaNacimiento() {
-        return fechaNacimiento;
+    //diaNacimiento
+    public int getDiaNacimiento() {
+        return diaNacimiento;
     }
-    public void setFechaNacimiento(Fecha fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setDiaNacimiento(int diaNacimiento) {
+        this.diaNacimiento = diaNacimiento;
     }
+
+    //mesNacimiento
+    public int getMesNacimiento() {
+        return mesNacimiento;
+    }
+    public void setMesNacimiento(int mesNacimiento) {
+        this.mesNacimiento = mesNacimiento;
+    }
+
+    //anioNacimiento
+    public int getAnioNacimiento() {
+        return anioNacimiento;
+    }
+    public void setAnioNacimiento(int anioNacimiento) {
+        this.anioNacimiento = anioNacimiento;
+    }
+
 
     ////Metodos
     /// calcularEdad
-    public int calcularEdad() {
-        // Obtener la fecha actual
-        java.util.Calendar fechaActual = java.util.Calendar.getInstance();
-        int añoActual = fechaActual.get(java.util.Calendar.YEAR);
-        int mesActual = fechaActual.get(java.util.Calendar.MONTH) + 1; // Los meses comienzan desde 0
-        int diaActual = fechaActual.get(java.util.Calendar.DAY_OF_MONTH);
 
-        // Calcular la edad
-        int edad = añoActual - fechaNacimiento.getAño();
-
-        // Ajustar la edad si el cumpleaños aún no ha ocurrido este año
-        if (mesActual < fechaNacimiento.getMes() || (mesActual == fechaNacimiento.getMes() && diaActual < fechaNacimiento.getDia())) {
-            edad--;
-        }
-
-        return edad;
+        public int calcularEdad() {
+        LocalDate fechaNac = LocalDate.of(anioNacimiento, mesNacimiento, diaNacimiento);
+        LocalDate fechaHoy = LocalDate.now();
+        return Period.between(fechaNac, fechaHoy).getYears();
     }
+
 
     //Frecuencia cardiaca maxima
     public int calcularFrecuenciaCardiacaMaxima() {
